@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[调试jdk源码无法显示变量值]]></title>
+    <url>%2F2018%2F11%2F23%2F%E8%B0%83%E8%AF%95jdk%E6%BA%90%E7%A0%81%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E5%8F%98%E9%87%8F%E5%80%BC%2F</url>
+    <content type="text"><![CDATA[在调试代码时，有时需要看下jdk源码的逻辑，但是F5进入方法之后，发现没法看变量的值，给调试带来很大的麻烦，这是因为在jdk中，sun公司对rt.jar中的类编译时，去掉了调试信息。有方法解决吗？答案时肯定的。 解决方案 在你的D:盘新建jdk文件夹，然后在文件夹里面分别创建两个文件夹jdk_src（存放源码）和jdk_debug（存放编译结果文件）。 从%JAVA_HOME%路径下找到src.zip源码源码压缩包，解压至D:/jdk/jdk_src目录中，并只保留java，javax,org三个文件夹。 从%JAVA_HOME%\jre\lib找到rt.jar，将它拷贝到D:/jdk文件夹。 打开DOS命令窗口，用命令cd命令进入D:/jdk文件夹，然后执行命令 1dir /B /S /X .\jdk_src\*.java &gt; .\filelist.txt 完成后会在D:/jdk目录生成filelist.txt文件，里面为待编译的文件路径/.java。 执行命令 12javac -J-Xms16m -J-Xmx1024m -sourcepath .\jdk_src -cp .\rt.jar -d .\jdk_debug -g @.\filelist.txt &gt;&gt; .\log.txt 2&gt;&amp;1 会编译filelist.txt文件中列出的.java源文件，编译的.class文件会放入D:/jdk/jdk_debug文件夹，同时编译过程中会在D:/jdk生成log.txt文件。 执行cd命令切换到D:/jdk/jdk_debug，然后执行 1jar cf0 rt_debug.jar * 将.class文件打成jar，打包完成后会在D:/jdk/jdk_debug目录中生成rt_debug.jar。 把这个生成的rt_debug.jar包复制到%JAVA_HOME%\jre\lib\endorsed下。如果没有endorsed目录，自己创建一下。 在eclipse里面找到Window-&gt;Installed JRES，选择jdk，点击Edit，然后点击Add External jars，选择刚才创建的rt_debug.jar导入，然后把rt_debug.jar移动到rt.jar的前面，最后选中rt_debug.jar，点击Source Attachment选择%JAVA_HOME%/jdk/src.zip添加源文件，最后，重启eclipse。 注：本文参考一曲破东风]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>源码调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[博客快速入门]]></title>
+    <url>%2F2018%2F05%2F08%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+</search>
