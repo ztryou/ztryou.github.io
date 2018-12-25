@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="正则表达式"><meta name="keywords" content="正则表达式"><meta name="author" content="ztryou,undefined"><meta name="copyright" content="ztryou"><title>正则表达式 | 神户炸酱面の博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.3"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  localSearch: undefined
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#正则基础知识点"><span class="toc-number">1.</span> <span class="toc-text">正则基础知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#元字符"><span class="toc-number">1.1.</span> <span class="toc-text">元字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重复限定符"><span class="toc-number">1.2.</span> <span class="toc-text">重复限定符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分组"><span class="toc-number">1.3.</span> <span class="toc-text">分组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#转义"><span class="toc-number">1.4.</span> <span class="toc-text">转义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#条件或"><span class="toc-number">1.5.</span> <span class="toc-text">条件或</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#区间"><span class="toc-number">1.6.</span> <span class="toc-text">区间</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正则进阶知识点"><span class="toc-number">2.</span> <span class="toc-text">正则进阶知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#零宽断言"><span class="toc-number">2.1.</span> <span class="toc-text">零宽断言</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#正向先行断言"><span class="toc-number">2.1.1.</span> <span class="toc-text">正向先行断言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#正向后行断言"><span class="toc-number">2.1.2.</span> <span class="toc-text">正向后行断言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#负向先行断言"><span class="toc-number">2.1.3.</span> <span class="toc-text">负向先行断言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#负向后行断言"><span class="toc-number">2.1.4.</span> <span class="toc-text">负向后行断言</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#捕获和非捕获"><span class="toc-number">2.2.</span> <span class="toc-text">捕获和非捕获</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#数字编号捕获组"><span class="toc-number">2.2.1.</span> <span class="toc-text">数字编号捕获组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#命名编号捕获组"><span class="toc-number">2.2.2.</span> <span class="toc-text">命名编号捕获组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#非捕获组"><span class="toc-number">2.2.3.</span> <span class="toc-text">非捕获组</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反向引用"><span class="toc-number">2.3.</span> <span class="toc-text">反向引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#贪婪和非贪婪"><span class="toc-number">2.4.</span> <span class="toc-text">贪婪和非贪婪</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#贪婪"><span class="toc-number">2.4.1.</span> <span class="toc-text">贪婪</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#懒惰"><span class="toc-number">2.4.2.</span> <span class="toc-text">懒惰</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反义"><span class="toc-number">2.5.</span> <span class="toc-text">反义</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">ztryou</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">4</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">3</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">3</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container" style="background-image: url(true)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">神户炸酱面の博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span></div><div id="post-info"><div id="post-title">正则表达式</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-12-25</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Java基础/">Java基础</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><h3 id="正则基础知识点"><a href="#正则基础知识点" class="headerlink" title="正则基础知识点"></a><strong>正则基础知识点</strong></h3><h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><p>万物皆有缘，正则也是如此，元字符是构造正则表达式的一种基本元素。 我们先来记几个常用的元字符：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">元字符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">.</td>
+<td style="text-align:center">匹配除换行符以外的任意字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\w</td>
+<td style="text-align:center">匹配字母或数字或下划线或汉字</td>
+</tr>
+<tr>
+<td style="text-align:center">\s</td>
+<td style="text-align:center">匹配任意的空白符</td>
+</tr>
+<tr>
+<td style="text-align:center">\d</td>
+<td style="text-align:center">匹配数字</td>
+</tr>
+<tr>
+<td style="text-align:center">\b</td>
+<td style="text-align:center">匹配单词的开始或结束</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">匹配字符串的开始</td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:center">匹配字符串的结束</td>
+</tr>
+</tbody>
+</table>
+<p>有了元字符之后，我们就可以利用这些元字符来写一些简单的正则表达式了， 比如：</p>
+<p>匹配有abc开头的字符串：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\babc或者^abc</span><br></pre></td></tr></table></figure>
+<p> 匹配8位数字的QQ号码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d\d\d\d\d\d\d\d$</span><br></pre></td></tr></table></figure>
+<p>匹配1开头11位数字的手机号码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^<span class="number">1</span>\d\d\d\d\d\d\d\d\d\d$</span><br></pre></td></tr></table></figure>
+<h4 id="重复限定符"><a href="#重复限定符" class="headerlink" title="重复限定符"></a>重复限定符</h4><p>有了元字符就可以写不少的正则表达式了，但细心的你们可能会发现：别人写的正则简洁明了，而不理君写的正则一堆乱七八糟而且重复的元字符组成的。正则没提供办法处理这些重复的元字符吗？</p>
+<p>答案是有的！ 为了处理这些重复问题，正则表达式中一些重复限定符，把重复部分用合适的限定符替代，下面我们来看一些限定符：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">语法</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">重复零次或更多次</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">重复一次或更多次</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:center">重复零次或一次</td>
+</tr>
+<tr>
+<td style="text-align:center">{n}</td>
+<td style="text-align:center">重复n次</td>
+</tr>
+<tr>
+<td style="text-align:center">{n,}</td>
+<td style="text-align:center">重复n次或更多次</td>
+</tr>
+<tr>
+<td style="text-align:center">{n,m}</td>
+<td style="text-align:center">重复n到m次</td>
+</tr>
+</tbody>
+</table>
+<p>有了这些限定符之后，我们就可以对之前的正则表达式进行改造了，比如：</p>
+<p>匹配8位数字的QQ号码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;<span class="number">8</span>&#125;$</span><br></pre></td></tr></table></figure>
+<p>匹配1开头11位数字的手机号码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^<span class="number">1</span>\d&#123;<span class="number">10</span>&#125;$</span><br></pre></td></tr></table></figure>
+<p>匹配银行卡号是14~18位的数字：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;<span class="number">14</span>,<span class="number">18</span>&#125;$</span><br></pre></td></tr></table></figure>
+<p>匹配以a开头的，0个或多个b结尾的字符串</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^ab*$</span><br></pre></td></tr></table></figure>
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>从上面的例子（4）中看到，<em>限定符是作用在与他左边最近的一个字符，那么问题来了，如果我想要ab同时被</em>限定那怎么办呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">正则表达式中用小括号()来做分组，也就是括号中的内容作为一个整体。</span><br></pre></td></tr></table></figure>
+<p>因此当我们要匹配多个ab时，我们可以这样。</p>
+<p>如：匹配字符串中包含0到多个ab开头：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(ab)*</span><br></pre></td></tr></table></figure>
+<h4 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h4><p>我们看到正则表达式用小括号来做分组，那么问题来了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果要匹配的字符串中本身就包含小括号，那是不是冲突？应该怎么办？</span><br></pre></td></tr></table></figure>
+<p>针对这种情况，正则提供了转义的方式，也就是要把这些元字符、限定符或者关键字转义成普通的字符，做法很简答，就是在要转义的字符前面加个斜杠，也就是\即可。 </p>
+<p>如：要匹配以(ab)开头</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(\(ab\))*</span><br></pre></td></tr></table></figure>
+<h4 id="条件或"><a href="#条件或" class="headerlink" title="条件或"></a>条件或</h4><p>回到我们刚才的手机号匹配，我们都知道：国内号码都来自三大网，它们都有属于自己的号段，比如联通有130/131/132/155/156/185/186/145/176等号段，假如让我们匹配一个联通的号码，那按照我们目前所学到的正则，应该无从下手的，因为这里包含了一些并列的条件，也就是“或”，那么在正则中是如何表示“或”的呢?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">正则用符号 | 来表示或，也叫做分支条件，当满足正则里的分支条件的任何一种条件时，都会当成是匹配成功。</span><br></pre></td></tr></table></figure>
+<p>那么我们就可以用或条件来处理这个问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(<span class="number">130</span>|<span class="number">131</span>|<span class="number">132</span>|<span class="number">155</span>|<span class="number">156</span>|<span class="number">185</span>|<span class="number">186</span>|<span class="number">145</span>|<span class="number">176</span>)\d&#123;<span class="number">8</span>&#125;$</span><br></pre></td></tr></table></figure>
+<h4 id="区间"><a href="#区间" class="headerlink" title="区间"></a>区间</h4><p>看到上面的例子，是不是看到有什么规律？是不是还有一种想要简化的冲动？ 实际是有的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">正则提供一个元字符中括号 [] 来表示区间条件。</span><br><span class="line">限定<span class="number">0</span>到<span class="number">9</span> 可以写成[<span class="number">0</span>-<span class="number">9</span>]</span><br><span class="line">限定A-Z 写成[A-Z]</span><br><span class="line">限定某些数字 [<span class="number">165</span>]</span><br></pre></td></tr></table></figure>
+<p>那上面的正则我们还改成这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^((13[0-2])|(15[56])|(18[5-6])|145|176)\d&#123;8&#125;$</span><br></pre></td></tr></table></figure>
+<p>好了，正则表达式的基本用法就讲到这里了，其实它还有非常多的知识点以及元字符，我们在此只列举了部分元字符和语法来讲，旨在给那些不懂正则或者想学正则但有看不下去文档的人做一个快速入门级的教程，看完本教程，即使你不能写出高大上的正则，至少也能写一些简单的正则或者看得懂别人写的正则了。</p>
+<h3 id="正则进阶知识点"><a href="#正则进阶知识点" class="headerlink" title="正则进阶知识点"></a>正则进阶知识点</h3><h4 id="零宽断言"><a href="#零宽断言" class="headerlink" title="零宽断言"></a>零宽断言</h4><p>无论是零宽还是断言，听起来都古古怪怪的， 那先解释一下这两个词。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">断言：俗话的断言就是“我断定什么什么”，而正则中的断言，就是说正则可以指明在指定的内容的前面或后面会出现满足指定规则的内容，意思正则也可以像人类那样断定什么什么，比如<span class="string">"ss1aa2bb3"</span>,正则可以用断言找出aa2后面有bb3，也可以找出aa2前面有ss1.</span><br><span class="line">零宽：就是没有宽度，在正则中，断言只是匹配位置，不占字符，也就是说，匹配结果里是不会返回断言本身。</span><br></pre></td></tr></table></figure>
+<p>意思是讲明白了，那他有什么用呢？ 我们来举个栗子： 假设我们要用爬虫抓取csdn里的文章阅读量。通过查看源代码可以看到文章阅读量这个内容是这样的结构：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"&lt;span class="</span>read-count<span class="string">"&gt;阅读数：641&lt;/span&gt;"</span></span><br></pre></td></tr></table></figure>
+<p>其中也就‘641’这个是变量，也就是说不同文章不同的值，当我们拿到这个字符串时，需要获得这里边的‘641’有很多种办法，但如果正则应该怎么匹配呢？</p>
+<p>下面先来讲几种类型的断言：</p>
+<h5 id="正向先行断言"><a href="#正向先行断言" class="headerlink" title="正向先行断言"></a>正向先行断言</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">正向先行断言（正前瞻）：</span><br><span class="line">语法：（?=pattern）</span><br><span class="line">作用：匹配pattern表达式的前面内容，不返回本身</span><br></pre></td></tr></table></figure>
+<p>这样子说，还是一脸懵逼，好吧，回归刚才那个栗子，要取到阅读量，在正则表达式中就意味着要能匹配到‘’前面的数字内容 按照上所说的正向先行断言可以匹配表达式前面的内容，那意思就是:(?=) 就可以匹配到前面的内容了。 匹配什么内容呢？如果要所有内容那就是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String reg = <span class="string">".+(?=&lt;/span&gt;)"</span>;</span><br><span class="line">String test = <span class="string">"&lt;span class=\"read-count\"&gt;阅读数：641&lt;/span&gt;"</span>;</span><br><span class="line">Pattern pattern = Pattern.compile(reg);</span><br><span class="line">Matcher mc = pattern.matcher(test);</span><br><span class="line"><span class="keyword">while</span>(mc.find())&#123;</span><br><span class="line">  System.out.println(<span class="string">"匹配结果："</span>)</span><br><span class="line">  System.out.println(mc.group());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//匹配结果：</span></span><br><span class="line"><span class="comment">//&lt;span class="read-count"&gt;阅读数：641</span></span><br></pre></td></tr></table></figure>
+<p>可是老哥我们要的只是前面的数字呀，那也简单咯，匹配数字 \d,那可以改成：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String reg = <span class="string">"\\d+(?=&lt;/span&gt;)"</span>;</span><br><span class="line">String test = <span class="string">"&lt;span class=\"read-count\"&gt;阅读数：641&lt;/span&gt;"</span>;</span><br><span class="line">Pattern pattern = Pattern.compile(reg);</span><br><span class="line">Matcher mc = pattern.matcher(test);</span><br><span class="line"><span class="keyword">while</span>(mc.find())&#123;</span><br><span class="line">  System.out.println(mc.group());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//匹配结果：</span></span><br><span class="line"><span class="comment">//641</span></span><br></pre></td></tr></table></figure>
+<h5 id="正向后行断言"><a href="#正向后行断言" class="headerlink" title="正向后行断言"></a>正向后行断言</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">正向后行断言（正后顾）:</span><br><span class="line">语法：（?&lt;=pattern）</span><br><span class="line">作用：匹配pattern表达式的后面的内容，不返回本身。</span><br></pre></td></tr></table></figure>
+<p>有先行就有后行，先行是匹配前面的内容，那后行就是匹配后面的内容啦。 上面的栗子，我们也可以用后行断言来处理.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//(?&lt;=&lt;span class="read-count"&gt;阅读数：)\d+</span></span><br><span class="line"> String reg=<span class="string">"(?&lt;=&lt;span class=\"read-count\"&gt;阅读数：)\\d+"</span>;</span><br><span class="line"> String test = <span class="string">"&lt;span class=\"read-count\"&gt;阅读数：641&lt;/span&gt;"</span>;</span><br><span class="line"> Pattern pattern = Pattern.compile(reg);</span><br><span class="line"> Matcher mc=    pattern.matcher(test);</span><br><span class="line"> <span class="keyword">while</span>(mc.find())&#123;</span><br><span class="line">     System.out.println(mc.group());</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">//匹配结果：</span></span><br><span class="line"><span class="comment">//641</span></span><br></pre></td></tr></table></figure>
+<h5 id="负向先行断言"><a href="#负向先行断言" class="headerlink" title="负向先行断言"></a>负向先行断言</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">负向先行断言（负前瞻）</span><br><span class="line">语法：(?!pattern)</span><br><span class="line">作用：匹配非pattern表达式的前面内容，不返回本身</span><br></pre></td></tr></table></figure>
+<p>有正向也有负向，负向在这里其实就是非的意思。 举个栗子：比如有一句 “我爱祖国，我是祖国的花朵” 现在要找到不是’的花朵’前面的祖国 用正则就可以这样写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">祖国(?!的花朵)</span><br></pre></td></tr></table></figure>
+<h5 id="负向后行断言"><a href="#负向后行断言" class="headerlink" title="负向后行断言"></a>负向后行断言</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">负向后行断言（负后顾）</span><br><span class="line">语法：(?&lt;!pattern)</span><br><span class="line">作用：匹配非pattern表达式的后面内容，不返回本身。</span><br></pre></td></tr></table></figure>
+<h4 id="捕获和非捕获"><a href="#捕获和非捕获" class="headerlink" title="捕获和非捕获"></a>捕获和非捕获</h4><p>单纯说到捕获，他的意思是匹配表达式，但捕获通常和分组联系在一起，也就是“捕获组”</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">捕获组：匹配子表达式的内容，把匹配结果保存到内存中中数字编号或显示命名的组里，以深度优先进行编号，之后可以通过序号或名称来使用这些匹配结果</span><br></pre></td></tr></table></figure>
+<p>而根据命名方式的不同，又可以分为两种组：</p>
+<h5 id="数字编号捕获组"><a href="#数字编号捕获组" class="headerlink" title="数字编号捕获组"></a>数字编号捕获组</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">数字编号捕获组：</span><br><span class="line">语法：(exp)</span><br><span class="line">解释：从表达式左侧开始，每出现一个左括号和它对应的右括号之间的内容为一个分组，在分组中，第<span class="number">0</span>组为整个表达式，第一组开始为分组。</span><br><span class="line">比如固定电话的：<span class="number">020</span>-<span class="number">85653333</span></span><br><span class="line">他的正则表达式为：(<span class="number">0</span>\d&#123;<span class="number">2</span>&#125;)-(\d&#123;<span class="number">8</span>&#125;)</span><br><span class="line">按照左括号的顺序，这个表达式有如下分组：</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">编号</th>
+<th style="text-align:center">分组</th>
+<th style="text-align:center">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">(0\d{2})-(\d{8})</td>
+<td style="text-align:center">020-85653333</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">(0\d{2})</td>
+<td style="text-align:center">020</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">(\d{8})</td>
+<td style="text-align:center">85653333</td>
+</tr>
+</tbody>
+</table>
+<p>我们用Java来验证一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String test = <span class="string">"020-85653333"</span>;</span><br><span class="line">String reg = <span class="string">"(0\\d&#123;2&#125;)-(\\d&#123;8&#125;)"</span>;</span><br><span class="line">Pattern pattern = Pattern.compile(reg);</span><br><span class="line">Matcher mc = pattern.matcher(test);</span><br><span class="line"><span class="keyword">if</span>(mc.find())&#123;</span><br><span class="line">	System.out.println(<span class="string">"分组的个数有："</span> +  mc.groupCount());</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=mc.groupCount();i++)&#123;</span><br><span class="line">		System.out.println(<span class="string">"第"</span> +  i + <span class="string">"个分组为："</span> + mc.group(i));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//分组的个数有：2</span></span><br><span class="line"><span class="comment">//第0个分组为：020-85653333</span></span><br><span class="line"><span class="comment">//第1个分组为：020</span></span><br><span class="line"><span class="comment">//第2个分组为：85653333</span></span><br></pre></td></tr></table></figure>
+<p>可见，分组个数是2，但是因为第0个为整个表达式本身，因此也一起输出了。</p>
+<h5 id="命名编号捕获组"><a href="#命名编号捕获组" class="headerlink" title="命名编号捕获组"></a>命名编号捕获组</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">命名编号捕获组：</span><br><span class="line">语法：(?&lt;name&gt;exp)</span><br><span class="line">解释：分组的命名由表达式中的name指定</span><br><span class="line">比如区号也可以这样写:(?&lt;quhao&gt;\<span class="number">0</span>\d&#123;<span class="number">2</span>&#125;)-(?&lt;haoma&gt;\d&#123;<span class="number">8</span>&#125;)</span><br><span class="line">按照左括号的顺序，这个表达式有如下分组：</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">分组</th>
+<th style="text-align:center">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">(0\d{2})-(\d{8})</td>
+<td style="text-align:center">020-85653333</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">quhao</td>
+<td style="text-align:center">(0\d{2})</td>
+<td style="text-align:center">020</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">haoma</td>
+<td style="text-align:center">(\d{8})</td>
+<td style="text-align:center">85653333</td>
+</tr>
+</tbody>
+</table>
+<p>用代码来验证一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">String test = <span class="string">"020-85653333"</span>;</span><br><span class="line">String reg = <span class="string">"(?&lt;quhao&gt;0\\d&#123;2&#125;)-(?&lt;haoma&gt;\\d&#123;8&#125;)"</span>;</span><br><span class="line">Pattern pattern = Pattern.compile(reg);</span><br><span class="line">Matcher mc = pattern.matcher(test);</span><br><span class="line"><span class="keyword">if</span>(mc.find())&#123;</span><br><span class="line">	System.out.println(<span class="string">"分组的个数有："</span> + mc.groupCount());</span><br><span class="line">	System.out.println(mc.group(<span class="string">"quhao"</span>));</span><br><span class="line">	System.out.println(mc.group(<span class="string">"haoma"</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//分组的个数有：2</span></span><br><span class="line"><span class="comment">//分组名称为:quhao,匹配内容为：020</span></span><br><span class="line"><span class="comment">//分组名称为:haoma,匹配内容为：85653333</span></span><br></pre></td></tr></table></figure>
+<h5 id="非捕获组"><a href="#非捕获组" class="headerlink" title="非捕获组"></a>非捕获组</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">非捕获组：</span><br><span class="line">语法：(?:exp)</span><br><span class="line">解释：和捕获组刚好相反，它用来标识那些不需要捕获的分组，说的通俗一点，就是你可以根据需要去保存你的分组。</span><br></pre></td></tr></table></figure>
+<p>比如上面的正则表达式，程序不需要用到第一个分组，那就可以这样写：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">编号</th>
+<th style="text-align:center">分组</th>
+<th style="text-align:center">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">(0\d{2})-(\d{8})</td>
+<td style="text-align:center">020-85653333</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">(\d{8})</td>
+<td style="text-align:center">85653333</td>
+</tr>
+</tbody>
+</table>
+<p>验证一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String test = <span class="string">"020-85653333"</span>;</span><br><span class="line">String reg = <span class="string">"(?:0\\d&#123;2&#125;)-(\\d&#123;8&#125;)"</span>;</span><br><span class="line">Pattern pattern = Pattern.compile(reg);</span><br><span class="line">Matcher mc = pattern.matcher(test);</span><br><span class="line"><span class="keyword">if</span>(mc.find())&#123;</span><br><span class="line">	System.out.println(<span class="string">"分组的个数有："</span>+mc.groupCount());</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=mc.groupCount();i++)&#123;</span><br><span class="line">		System.out.println(<span class="string">"第"</span>+i+<span class="string">"个分组为："</span>+mc.group(i));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//分组的个数有：1</span></span><br><span class="line"><span class="comment">//第0个分组为：020-85653333</span></span><br><span class="line"><span class="comment">//第1个分组为：85653333</span></span><br></pre></td></tr></table></figure>
+<h4 id="反向引用"><a href="#反向引用" class="headerlink" title="反向引用"></a>反向引用</h4><p>上面讲到捕获，我们知道：<strong>捕获会返回一个捕获组，这个分组是保存在内存中，不仅可以在正则表达式外部通过程序进行引用，也可以在正则表达式内部进行引用，这种引用方式就是反向引用</strong>。</p>
+<p>举栗子吧： 比如要查找一串字母”aabbbbgbddesddfiid”里成对的字母 如果按照我们之前学到的正则，什么区间啊限定啊断言啊可能是办不到的， 现在我们先用程序思维理一下思路：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">匹配到一个字母</span><br><span class="line">匹配第下一个字母，检查是否和上一个字母是否一样</span><br><span class="line">如果一样，则匹配成功，否则失败</span><br></pre></td></tr></table></figure>
+<p>这里的思路2中匹配下一个字母时，需要用到上一个字母，那怎么记住上一个字母呢？？？<br>这下子捕获就有用处啦，我们可以利用捕获把上一个匹配成功的内容用来作为本次匹配的条件<br>好了，有思路就要实践<br>首先匹配一个字母：\w<br>我们需要做成分组才能捕获，因此写成这样：(\w)</p>
+<p>那这个表达式就有一个捕获组：（\w）<br>然后我们要用这个捕获组作为条件，那就可以：(\w)\1<br>这样就大功告成了<br>可能有人不明白了，\1是什么意思呢？<br>还记得捕获组有两种命名方式吗，<strong>一种是是根据捕获分组顺序命名，一种是自定义命名来作为捕获组的命名</strong><br><strong>在默认情况下都是以数字来命名，而且数字命名的顺序是从1开始的</strong><br>因此要引用第一个捕获组，根据反向引用的数字命名规则 就需要 \k<1>或者\1<br>当然，通常都是是后者。<br>我们来测试一下：</1></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">String test = <span class="string">"aabbbbgbddesddfiid"</span>;</span><br><span class="line">Pattern pattern = Pattern.compile(<span class="string">"(\\w)\\1"</span>);</span><br><span class="line">Matcher mc= pattern.matcher(test);</span><br><span class="line"><span class="keyword">while</span>(mc.find())&#123;</span><br><span class="line">	System.out.println(mc.group());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//aa</span></span><br><span class="line"><span class="comment">//bb</span></span><br><span class="line"><span class="comment">//bb</span></span><br><span class="line"><span class="comment">//dd</span></span><br><span class="line"><span class="comment">//dd</span></span><br><span class="line"><span class="comment">//ii</span></span><br></pre></td></tr></table></figure>
+<h4 id="贪婪和非贪婪"><a href="#贪婪和非贪婪" class="headerlink" title="贪婪和非贪婪"></a>贪婪和非贪婪</h4><h5 id="贪婪"><a href="#贪婪" class="headerlink" title="贪婪"></a>贪婪</h5><p>我们都知道，贪婪就是不满足，尽可能多的要。 在正则中，贪婪也是差不多的意思:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">贪婪匹配：当正则表达式中包含能接受重复的限定符时，通常的行为是（在使整个表达式能得到匹配的前提下）匹配尽可能多的字符，这匹配方式叫做贪婪匹配。</span><br><span class="line">特性：一次性读入整个字符串进行匹配，每当不匹配就舍弃最右边一个字符，继续匹配，依次匹配和舍弃（这种匹配-舍弃的方式也叫做回溯），直到匹配成功或者把整个字符串舍弃完为止，因此它是一种最大化的数据返回，能多不会少。</span><br></pre></td></tr></table></figure>
+<p>前面我们讲过重复限定符，其实这些限定符就是贪婪量词，比如表达式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\d&#123;<span class="number">3</span>,<span class="number">6</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>用来匹配3到6位数字，在这种情况下，它是一种贪婪模式的匹配，也就是假如字符串里有6个个数字可以匹配，那它就是全部匹配到。 如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">String reg = <span class="string">"\\d&#123;3,6&#125;"</span>;        </span><br><span class="line">String test = <span class="string">"61762828 176 2991 871"</span>;</span><br><span class="line">System.out.println(<span class="string">"文本："</span>+test);</span><br><span class="line">System.out.println(<span class="string">"贪婪模式："</span>+reg);</span><br><span class="line">Pattern p1 = Pattern.compile(reg);</span><br><span class="line">Matcher m1 = p1.matcher(test);</span><br><span class="line"><span class="keyword">while</span>(m1.find())&#123;</span><br><span class="line">	System.out.println(<span class="string">"匹配结果："</span> + m1.group(<span class="number">0</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//文本：61762828 176 2991 44 871</span></span><br><span class="line"><span class="comment">//贪婪模式：\d&#123;3,6&#125;</span></span><br><span class="line"><span class="comment">//匹配结果：617628</span></span><br><span class="line"><span class="comment">//匹配结果：176</span></span><br><span class="line"><span class="comment">//匹配结果：2991</span></span><br><span class="line"><span class="comment">//匹配结果：871</span></span><br></pre></td></tr></table></figure>
+<p>那有人会问，如果多个贪婪量词凑在一起，那他们是如何支配自己的匹配权的呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">是这样的，多个贪婪在一起时，如果字符串能满足他们各自最大程度的匹配时，就互不干扰，但如果不能满足时，会根据深度优先原则，也就是从左到右的每一个贪婪量词，优先最大数量的满足，剩余再分配下一个量词匹配。</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String reg=<span class="string">"(\\d&#123;1,2&#125;)(\\d&#123;3,4&#125;)"</span>;        </span><br><span class="line">String test=<span class="string">"61762828 176 2991 87321"</span>;</span><br><span class="line">System.out.println(<span class="string">"文本："</span>+test);</span><br><span class="line">System.out.println(<span class="string">"贪婪模式："</span>+reg);</span><br><span class="line">Pattern p1 =Pattern.compile(reg);</span><br><span class="line">Matcher m1 = p1.matcher(test);</span><br><span class="line"><span class="keyword">while</span>(m1.find())&#123;</span><br><span class="line">	System.out.println(<span class="string">"匹配结果："</span>+m1.group(<span class="number">0</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//文本：61762828 176 2991 87321</span></span><br><span class="line"><span class="comment">//贪婪模式：(\d&#123;1,2&#125;)(\d&#123;3,4&#125;)</span></span><br><span class="line"><span class="comment">//匹配结果：617628</span></span><br><span class="line"><span class="comment">//匹配结果：2991</span></span><br><span class="line"><span class="comment">//匹配结果：87321</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"617628"</span> 是前面的\d&#123;<span class="number">1</span>,<span class="number">2</span>&#125;匹配出了<span class="number">61</span>，后面的匹配出了<span class="number">7628</span></span><br><span class="line"><span class="string">"2991"</span> 是前面的\d&#123;<span class="number">1</span>,<span class="number">2</span>&#125;匹配出了<span class="number">29</span> ，后面的匹配出了<span class="number">91</span></span><br><span class="line"><span class="string">"87321"</span>是前面的\d&#123;<span class="number">1</span>,<span class="number">2</span>&#125;匹配出了<span class="number">87</span>，后面的匹配出了<span class="number">321</span></span><br></pre></td></tr></table></figure>
+<h5 id="懒惰"><a href="#懒惰" class="headerlink" title="懒惰"></a>懒惰</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">懒惰匹配：当正则表达式中包含能接受重复的限定符时，通常的行为是（在使整个表达式能得到匹配的前提下）匹配尽可能少的字符，这匹配方式叫做懒惰匹配。</span><br><span class="line">特性：从左到右，从字符串的最左边开始匹配，每次试图不读入字符匹配，匹配成功，则完成匹配，否则读入一个字符再匹配，依此循环（读入字符、匹配）直到匹配成功或者把字符串的字符匹配完为止。</span><br></pre></td></tr></table></figure>
+<p>懒惰量词是在贪婪量词后面加个“？”</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">代码</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">*?</td>
+<td style="text-align:center">重复任意次，但尽可能少重复</td>
+</tr>
+<tr>
+<td style="text-align:center">+?</td>
+<td style="text-align:center">重复1次或更多次，但尽可能少重复</td>
+</tr>
+<tr>
+<td style="text-align:center">??</td>
+<td style="text-align:center">重复0次或1次，但尽可能少重复</td>
+</tr>
+<tr>
+<td style="text-align:center">{n,m}?</td>
+<td style="text-align:center">重复n到m次，但尽可能少重复</td>
+</tr>
+<tr>
+<td style="text-align:center">{n,}?</td>
+<td style="text-align:center">重复n次以上，但尽可能少重复</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String reg = <span class="string">"(\\d&#123;1,2&#125;?)(\\d&#123;3,4&#125;)"</span>;        </span><br><span class="line">String test = <span class="string">"61762828 176 2991 87321"</span>;</span><br><span class="line">System.out.println(<span class="string">"文本："</span> + test);</span><br><span class="line">System.out.println(<span class="string">"贪婪模式："</span> + reg);</span><br><span class="line">Pattern p1 = Pattern.compile(reg);</span><br><span class="line">Matcher m1 = p1.matcher(test);</span><br><span class="line"><span class="keyword">while</span>(m1.find())&#123;</span><br><span class="line">	System.out.println(<span class="string">"匹配结果："</span> + m1.group(<span class="number">0</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//文本：61762828 176 2991 87321</span></span><br><span class="line"><span class="comment">//贪婪模式：(\d&#123;1,2&#125;?)(\d&#123;3,4&#125;)</span></span><br><span class="line"><span class="comment">//匹配结果：61762</span></span><br><span class="line"><span class="comment">//匹配结果：2991</span></span><br><span class="line"><span class="comment">//匹配结果：87321</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"61762"</span> 是左边的懒惰匹配出<span class="number">6</span>，右边的贪婪匹配出<span class="number">1762</span></span><br><span class="line"><span class="string">"2991"</span>  是左边的懒惰匹配出<span class="number">2</span>，右边的贪婪匹配出<span class="number">991</span></span><br><span class="line"><span class="string">"87321"</span> 左边的懒惰匹配出<span class="number">8</span>，右边的贪婪匹配出<span class="number">7321</span></span><br></pre></td></tr></table></figure>
+<h4 id="反义"><a href="#反义" class="headerlink" title="反义"></a>反义</h4><p>前面说到元字符的都是要匹配什么什么，当然如果你想反着来，不想匹配某些字符，正则也提供了一些常用的反义元字符：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">元字符</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\W</td>
+<td style="text-align:center">匹配任意不是字母，数字，下划线，汉字的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\S</td>
+<td style="text-align:center">匹配任意不是空白符的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\D</td>
+<td style="text-align:center">匹配任意非数字的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\B</td>
+<td style="text-align:center">匹配不是单词开头或结束的位置</td>
+</tr>
+<tr>
+<td style="text-align:center">[^x]</td>
+<td style="text-align:center">匹配除了x以外的任意字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[^aeiou]</td>
+<td style="text-align:center">匹配除了aeiou这几个字母以外的任意字符</td>
+</tr>
+</tbody>
+</table>
+<p>正则进阶知识就讲到这里，正则是一门博大精深的语言，其实学会它的一些语法和知识点还算不太难，但想要做到真正学以致用能写出非常6的正则，还有很远的距离，只有真正对它感兴趣的，并且经常研究和使用它，才会渐渐的理解它的博大精深之处，我就带你们走到这，剩下的，靠自己啦。</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">ztryou</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://ztryou.github.io/2018/12/25/正则表达式/">https://ztryou.github.io/2018/12/25/正则表达式/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ztryou.github.io" target="_blank">神户炸酱面の博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/正则表达式/">正则表达式</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/12/25/Pattern和Matcher的使用/"><i class="fa fa-chevron-left">  </i><span>Pattern和Matcher的使用</span></a></div><div class="next-post pull-right"><a href="/2018/11/23/调试jdk源码无法显示变量值/"><span>调试jdk源码无法显示变量值</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 By ztryou</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.3"></script><script src="/js/fancybox.js?version=1.5.3"></script><script src="/js/sidebar.js?version=1.5.3"></script><script src="/js/copy.js?version=1.5.3"></script><script src="/js/fireworks.js?version=1.5.3"></script><script src="/js/transition.js?version=1.5.3"></script><script src="/js/scroll.js?version=1.5.3"></script><script src="/js/head.js?version=1.5.3"></script></body></html>
